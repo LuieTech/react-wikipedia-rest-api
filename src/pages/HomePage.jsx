@@ -46,7 +46,7 @@ function HomePage() {
           <Link to={`/${c.alpha3Code}`}>
             <div className="d-flex justify-content-center align-items-center p-3">
               {/* <div><img src={`https://flagpedia.net/data/flags/icon/72x54/${imageCode}.png`} alt={c.name.common} /></div> 2nd option */}
-              <img src={flagLink(c.alpha2Code)} alt={c.name.common} className="me-2"/> {/* 1st option using a function 'flags()' */}
+              <img src={flagLink(c.alpha2Code)} alt={c.name.common} style={{width:"30px"}} className="me-2"/> {/* 1st option using a function 'flags()' */}
               <span className="name"> {c.name.common} </span>
 
               {/* <div key={c._id}><Link to={`/${c._id}`}>{c.name.common}</Link></div> ==> sending params to CountryDetails component 
