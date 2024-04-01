@@ -15,7 +15,7 @@ function CountryDetails() {
   //const query = new URLSearchParams(location.search).get("id") 
 
   const [country, setCountry] = useState(null);
-  console.log("este es el estado: ", country)
+  //console.log("este es el estado: ", country)
 
   useEffect(() => {
     async function fetchCountry() {
@@ -36,12 +36,12 @@ function CountryDetails() {
   return(
     <>
       <div className="title">Country Details</div>
-      <div>
+      <div className="mb-4"> 
         <div className="mb-3"><img src={countryService.flagLink(country.alpha2Code)} alt="Country-flag" /></div>
         <div className="mb-4">{country.name.common}</div> {/* Working with params */}
         
         <div className="container ">
-          <div className="row">
+          <div className="row mb-4">
             <div className="col">
               Capital
             </div>
@@ -49,7 +49,7 @@ function CountryDetails() {
               {country.capital}
             </div>
           </div>
-          <div className="row">
+          <div className="row mb-4">
             <div className="col">
               Area
             </div>
@@ -62,15 +62,17 @@ function CountryDetails() {
               Borders:
             </div>
             <div className="col">
+              { 
+                country.borders.length > 0 ? (
+                  country.borders.map(borderName => (
               
-              {country.borders.map(borderName => {
-            console.log("Este es el BorderName: " , borderName)
-            return (
+                    <div key={borderName} className="mb-2">{ borderName }</div>
 
-                <div key={borderName}>{borderName}</div>
-
-              )}
-              )}
+                  )
+                  )) : (
+                      <div>No border countries</div>
+                    )
+              }
             </div>
           </div>
         </div>
@@ -78,9 +80,9 @@ function CountryDetails() {
       </div>
       
       {/*<div>Country Id : {query}</div>  working with query's */}
-      <div>
-        <Link to={`/`}>Home</Link>
-      </div>
+      <button className="btn btn-primary">
+        <Link className="button" to={`/`}>Home</Link>
+      </button>
     </>
   )
 
